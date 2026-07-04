@@ -1,6 +1,12 @@
 {
+  "version": 2,
   "cleanUrls": true,
+  "builds": [
+    { "src": "api/generate.go", "use": "@vercel/go" },
+    { "src": "public/**/*", "use": "@vercel/static" }
+  ],
   "rewrites": [
+    { "source": "/api/(.*)", "destination": "api/generate.go" },
     { "source": "/(.*)", "destination": "/public/$1" }
   ]
 }

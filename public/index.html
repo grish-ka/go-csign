@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>go-csign: Safety Sign Generator</title>
+    <style>
+        :root {
+            --header-bg: #008443; /* Safety Green default */
+            --header-text: #ffffff;
+            --warning-bg: #fff200;
+            --prohibition-bg: #e41b13;
+            --mandatory-bg: #0054a6;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 320px;
+        }
+
+        /* --- THE FIXED SAFETY SIGN BOARD --- */
+        #safety-sign {
+            container-type: inline-size;
+            background: #ffffff;
+            border: calc(2.2cqw) solid #000000;
+            box-sizing: border-box;
+            padding: 3cqw;
+            width: 550px; 
+        }
+
+        .sign-header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            text-align: center;
+            font-size: 14cqw;
+            font-weight: bold;
+            padding: 1.5cqw 0;
+            text-transform: uppercase;
+            margin-bottom: 4cqw;
+        }
+
+        .sign-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 5cqw;
+            row-gap: 4cqw;
+        }
+
+        .sign-item {
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        .sign-icon-box {
+            width: 18cqw;
+            height: 18cqw;
+            flex-shrink: 0;
+            margin-right: 2cqw;
+        }
+
+        .sign-icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .sign-text-block {
+            flex-grow: 1;
+            height: 16cqw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center; 
+            padding: 1cqw 2cqw;
+            box-sizing: border-box;
+        }
+
+        .sign-text-content {
+            font-size: 3.2cqw;
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 1.15;
+        }
+
+        /* Color classes matching the asset types */
+        .warning .sign-text-block { background: var(--warning-bg); color: #000; }
+        .prohibition .sign-text-block { background: var(--prohibition-bg); color: #fff; }
+        .mandatory .sign-text-block { background: var(--mandatory-bg); color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="controls">
+        <h2>go-csign Controller</h2>
+        <button onclick="window.print()">Print Sign</button>
+    </div>
+
+    <div id="safety-sign">
+        <div class="sign-header">Site Safety</div>
+        <div class="sign-grid">
+            
+            <div class="sign-item prohibition" id="item-no-admittance">
+                <div class="sign-icon-box">
+                    <img src="assets/no-admittance.png" alt="No Admittance">
+                </div>
+                <div class="sign-text-block">
+                    <div class="sign-text-content">No admittance for unauthorised personnel</div>
+                </div>
+            </div>
+
+            </div>
+    </div>
+</div>
+
+</body>
+</html>
